@@ -2,6 +2,7 @@ package me.vik.gravity.entity;
 
 import me.vik.gravity.screen.GameScreen;
 import me.vik.gravity.util.Util;
+import box2dLight.RayHandler;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -105,6 +106,10 @@ public class Camera extends Entity {
 	public void slowDown(float slowFactor) {
 		this.slowFactor = slowFactor;//1 - (1 - this.slowFactor) - (1 - slowFactor);
 		slowTimeCounter = 0;
+	}
+
+	public void project(RayHandler rayHandler) {
+		rayHandler.setCombinedMatrix(camera.combined);
 	}
 
 }

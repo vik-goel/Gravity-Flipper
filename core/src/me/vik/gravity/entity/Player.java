@@ -34,13 +34,13 @@ public class Player extends Entity {
 		super(0, y);
 		reset(y, ceiling, camera);
 	}
-	
+
 	public void reset(float y, boolean ceiling, Camera camera) {
 		super.reset();
-		
+
 		this.x = 0.4f;
 		this.y = y;
-		
+
 		this.limit = y;
 		this.ceiling = ceiling;
 
@@ -53,16 +53,16 @@ public class Player extends Entity {
 
 		bounds = new Rectangle(x, y, SIZE, SIZE);
 		players.add(this);
-		
+
 		yVel = 0;
 	}
 
 	public void update(float dt, Camera camera) {
 		super.update(dt, camera);
-		
+
 		if (GameScreen.destroyed)
 			return;
-		
+
 		integrate(dt, camera);
 		boundsCheck(camera);
 	}
@@ -82,41 +82,41 @@ public class Player extends Entity {
 			move(xAmt, 0, camera);
 			return;
 		}
-		
+
 		final float maxStep = 0.01f;
-		
+
 		if (xAmt > maxStep) {
 			move(maxStep, 0, camera);
 			move(xAmt - maxStep, 0, camera);
 			return;
 		}
-		
+
 		if (yAmt > maxStep) {
 			move(0, maxStep, camera);
 			move(0, yAmt - maxStep, camera);
 			return;
 		}
-		
+
 		if (yAmt < -maxStep) {
 			move(0, -maxStep, camera);
 			move(0, yAmt + maxStep, camera);
 			return;
 		}
-		
+
 		x += xAmt;
 		y += yAmt;
-		
+
 		boundsCheck(camera);
 		checkCollisions();
 	}
 
 	private void checkCollisions() {
 		ArrayList<Obstacle> obstacles = manager.getObstacles();
-		
+
 		for (int i = 0; i < obstacles.size(); i++) {
 			//if ((!ceiling && !obstacles.get(i).isTopObstacle()) || (ceiling && obstacles.get(i).isTopObstacle()))
-				//continue;
-			
+			//continue;
+
 			if (obstacles.get(i).isCollidingWithPlayer(this))
 				remove();
 		}
@@ -137,7 +137,7 @@ public class Player extends Entity {
 
 		y = Math.max(GameScreen.LINE_THICKNESS, y);
 		y = Math.min(camera.getHeight() - SIZE - GameScreen.LINE_THICKNESS, y);
-		
+
 		setBoundsToCurrentPos();
 	}
 
@@ -153,20 +153,21 @@ public class Player extends Entity {
 	public Rectangle getBounds() {
 		return bounds;
 	}
-	
+
 	public void onRemove() {
 		manager.addEntity(Util.createRing(bounds.x, bounds.y, false, color.r, color.g, color.b));
-		Util.spawnParticles(manager, bounds.x + bounds.width / 2f, bounds.y  + bounds.height / 2f, color, 40);		
+		Util.spawnParticles(manager, bounds.x + bounds.width / 2f, bounds.y + bounds.height / 2f, color, 40);
 	}
 
 	public static void updateGravity(Camera camera, PauseButton pauseButton, MusicButton musicButton) {
 		if (TouchInput.spaceClicked() || (TouchInput.justDown() && !pauseButton.touchedInBounds(camera) && !musicButton.touchedInBounds(camera))) {
 			gravity *= -1;
-			
+
 			if (gravity > 0)
 				Sounds.play(Sounds.gravityUp);
-			else Sounds.play(Sounds.gravityDown);
-			
+			else
+				Sounds.play(Sounds.gravityDown);
+
 			for (int i = 0; i < players.size(); i++) {
 				Player player = players.get(i);
 
@@ -174,12 +175,12 @@ public class Player extends Entity {
 			}
 		}
 	}
-	
+
 	public static void clear() {
 		players.clear();
-		
+
 		if (gravity > 0)
 			gravity *= -1;
 	}
-	
+
 }

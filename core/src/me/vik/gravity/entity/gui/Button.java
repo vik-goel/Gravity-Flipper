@@ -80,7 +80,7 @@ public abstract class Button extends Entity {
 		
 		batch.begin();
 		
-		if (!Util.onMobile() && touchedInBounds(camera)) {
+		if (!Util.onMobile() && bounds.contains(TouchInput.getX() + camera.x, TouchInput.getY()) ) {
 			batch.setColor(mouseOver);
 		} else {
 			batch.setColor(Color.WHITE);

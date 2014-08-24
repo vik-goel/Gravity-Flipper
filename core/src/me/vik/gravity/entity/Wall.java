@@ -88,6 +88,8 @@ public class Wall extends Obstacle {
 		}
 
 		bounds.y = y;
+		
+		//body.setTransform(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2, 0);
 	}
 
 	public void render(Camera camera) {

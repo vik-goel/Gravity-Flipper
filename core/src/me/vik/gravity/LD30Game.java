@@ -26,11 +26,13 @@ public class LD30Game extends Game {
 	private int gameCounter = 0;
 	private boolean justDisplayedAd = false;
 	private boolean canDisplayAd = false;
+	private boolean firstGame = true;
 	
 	public void create () {
 		switchToMenuScreen();
 		
 		Gdx.input.setInputProcessor(new BackInputProcessor(this));
+		Gdx.input.setCatchBackKey(true);
 		
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/background music.mp3"));
 		backgroundMusic.setLooping(true);
@@ -66,7 +68,7 @@ public class LD30Game extends Game {
 		
 		setScreen(game);
 		
-		if (ad != null)
+		if (ad != null && !firstGame)
 			ad.load();
 	}
 
@@ -89,6 +91,8 @@ public class LD30Game extends Game {
 			
 			setScreen(gameOverScreen);
 		}
+		
+		firstGame = false;
 	}
 	
 	public static void stopMusic() {
@@ -100,7 +104,7 @@ public class LD30Game extends Game {
 	}
 	
 	public boolean willDisplayAd() {
-		return ad != null && !justDisplayedAd && gameCounter > 3 && canDisplayAd;
+		return ad != null && !firstGame && !justDisplayedAd && gameCounter > 5 && canDisplayAd;
 	}
 	
 	public void setAd(Ad ad) {

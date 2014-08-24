@@ -128,4 +128,5 @@ public class Util {
 	public static boolean onMobile() {
 		return Gdx.app.getType() == ApplicationType.Android || Gdx.app.getType() == ApplicationType.iOS;
 	}
+
 }

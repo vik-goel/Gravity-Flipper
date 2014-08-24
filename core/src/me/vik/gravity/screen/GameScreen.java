@@ -50,6 +50,7 @@ public class GameScreen extends RenderScreen {
 
 	public GameScreen(LD30Game game) {
 		super(game);
+		
 		obstacleGenerator = new ObstacleGenerator(manager);
 		itemGenerator = new ItemGenerator(manager);
 	}
@@ -94,7 +95,7 @@ public class GameScreen extends RenderScreen {
 
 	public void updateScreen(float dt) {
 		TouchInput.update();
-
+		
 		if (pauseButton.isPaused()) {
 			pauseButton.update(dt, camera);
 			continueButton.update(dt, camera);
@@ -162,7 +163,7 @@ public class GameScreen extends RenderScreen {
 		ScoreKeeper.getInstance().drawScore();
 
 		drawInstructions();
-
+		
 		continueButton.render(camera);
 	}
 
