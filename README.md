@@ -16,7 +16,10 @@ Click the mouse to reverse gravity.
 
 Good luck!
 
-The game is available here: 
+The game is available here:
+
 Web: http://ld30.hostingsiteforfree.com/ld/index.html
-Android: https://play.google.com/store/apps/details?id=me.vik.android
-Desktop: https://www.dropbox.com/s/gdma2igd14x9faf/Gravity%20Flipper.jar?dl=0
+
+Android: https://play.google.com/store/apps/details?id=me.vik.android 
+
+Desktop: https://www.dropbox.com/s/gdma2igd14x9faf/Gravity%20Flipper.jar?dl=0 
