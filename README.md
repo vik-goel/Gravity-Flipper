@@ -23,3 +23,5 @@ Web: http://ld30.hostingsiteforfree.com/ld/index.html
 Android: https://play.google.com/store/apps/details?id=me.vik.android 
 
 Desktop: https://www.dropbox.com/s/gdma2igd14x9faf/Gravity%20Flipper.jar?dl=0 
+
+Ludum Dare Competition Page: http://www.ludumdare.com/compo/ludum-dare-30/?action=preview&uid=29765
