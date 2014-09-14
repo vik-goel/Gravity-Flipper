@@ -18,7 +18,7 @@ Good luck!
 
 The game is available here:
 
-Web: http://ld30.hostingsiteforfree.com/ld/index.html
+Web: http://gamejolt.com/games/arcade/gravity-flipper/33117/
 
 Android: https://play.google.com/store/apps/details?id=me.vik.android 
 
